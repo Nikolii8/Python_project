@@ -1,2 +1,2 @@
 # Python_project
-Multyplayer card game
+Multiplayer card game
