@@ -160,21 +160,21 @@ player = Player(0, 0)
 world = World(world_data)
 
 questions = [
-    ("What is the capital of France?", "Paris"),
-    ("What is 2 + 2?", "4"),
-    ("Who wrote 'To Kill a Mockingbird'?", "Harper Lee"),
-    ("What is the speed of light?", "299792458"),
-    ("Who painted the Mona Lisa?", "Leonardo da Vinci"),
-    ("What is the smallest prime number?", "2"),
-    ("What is the largest planet in our solar system?", "Jupiter"),
-    ("Who discovered penicillin?", "Alexander Fleming"),
-    ("What is the square root of 64?", "8"),
-    ("What is the chemical symbol for gold?", "Au"),
-    ("Who is known as the father of computers?", "Charles Babbage"),
-    ("What year did the Titanic sink?", "1912"),
-    ("What is the largest mammal?", "Blue whale"),
-    ("Who wrote '1984'?", "George Orwell"),
-    ("What is the boiling point of water?", "100")
+    ("What keyword exits a loop?", "break"),
+    ("What operator checks equality?", "=="),
+    ("What is the output of 3 // 2?", "1"),
+    ("What function returns the length?", "len"),
+    ("What is the value of None?", "null"),
+    ("What method removes dictionary keys?", "pop"),
+    ("What symbol starts a comment?", "#"),
+    ("What keyword starts a loop?", "for"),
+    ("What method adds an item to a list?", "append"),
+    ("What data type is True?", "bool"),
+    ("What keyword defines a function?", "def"),
+    ("What function converts to string?", "str"),
+    ("What method converts all characters in a string to uppercase?", "upper"),
+    ("What function returns the maximum value?", "max"),
+    ("What keyword is used for logical OR?", "or")
 ]
 
 correct_answers = 0
