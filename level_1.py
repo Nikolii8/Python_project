@@ -1,56 +1,14 @@
 import pygame
 import os
 import tkinter as tk
+import random
 
 pygame.init()
 
 WIDTH = 1000
 HEIGHT = 512 
 
-
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-
-pygame.display.set_caption("Dialog")
-
-DIALOG_1_IMAGE = pygame.image.load(os.path.join('dialog_png', 'dialog_1.png'))
-DIALOG_1 = pygame.transform.scale(DIALOG_1_IMAGE, (WIDTH, HEIGHT))
-
-DIALOG_2_IMAGE = pygame.image.load(os.path.join('dialog_png', 'dialog_2.png'))
-DIALOG_2 = pygame.transform.scale(DIALOG_2_IMAGE, (WIDTH, HEIGHT))
-
-DIALOG_3_IMAGE = pygame.image.load(os.path.join('dialog_png', 'dialog_3.png'))
-DIALOG_3 = pygame.transform.scale(DIALOG_3_IMAGE, (WIDTH, HEIGHT))
-
-DIALOG_4_IMAGE = pygame.image.load(os.path.join('dialog_png', 'dialog_4.png'))
-DIALOG_4 = pygame.transform.scale(DIALOG_4_IMAGE, (WIDTH, HEIGHT))
-
-DIALOG_5_IMAGE = pygame.image.load(os.path.join('dialog_png', 'dialog_5.png'))
-DIALOG_5 = pygame.transform.scale(DIALOG_5_IMAGE, (WIDTH, HEIGHT))
-
-start_time = pygame.time.get_ticks()
-while pygame.time.get_ticks() < start_time+5000:
-    screen.blit(DIALOG_1, (0,0))
-    pygame.display.update()
-
-start_time = pygame.time.get_ticks()
-while pygame.time.get_ticks() < start_time+5000:
-    screen.blit(DIALOG_2, (0,0))
-    pygame.display.update()
-
-start_time = pygame.time.get_ticks()
-while pygame.time.get_ticks() < start_time+5000:
-    screen.blit(DIALOG_3, (0,0))
-    pygame.display.update()
-
-start_time = pygame.time.get_ticks()
-while pygame.time.get_ticks() < start_time+5000:
-    screen.blit(DIALOG_4, (0,0))
-    pygame.display.update()
-
-start_time = pygame.time.get_ticks()
-while pygame.time.get_ticks() < start_time+5000:
-    screen.blit(DIALOG_5, (0,0))
-    pygame.display.update()
     
 BOX_WIDTH_SIZE, BOX_HEIGHT_SIZE = 100, 30
 
@@ -64,7 +22,6 @@ pygame.display.set_caption("Techscape")
 BG = pygame.transform.scale(pygame.image.load(os.path.join("level1_png", "level_1.png")), (WIDTH, HEIGHT))
 
 boxes = []
-
 
 places = []
 num_places = 6 
@@ -190,7 +147,7 @@ class Parallelogram:
         points_tuple = tuple(self.points)
         shape_polygon = pygame.draw.polygon(WIN, WHITE, points_tuple)
         return shape_polygon.collidepoint(pos)
-    
+  
 rhombus_ids = [1, 2]
 parallelogram_ids = [3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -268,6 +225,82 @@ shapes = [rhombus1, rhombus2, parallelogram1, parallelogram2, parallelogram3, pa
 placed_ids = []
 correct_ids = [3, 8, 9, 1, 10, 6, 5]
 
+rhombus_ids1 = [1, 2]
+parallelogram_ids1 = [3, 4, 5, 6, 7, 8, 9, 10]
+
+rhombus3 = Rhombus([
+    (215, HEIGHT/2 - 100 - 25 + 200 + 100),
+    (245, HEIGHT/2 - 100 + 200 + 100),
+    (215, HEIGHT/2 - 100 + 25 + 200 + 100),
+    (185, HEIGHT/2 - 100 + 200 + 100)
+], "n<10", rhombus_ids1[0])
+
+rhombus4 = Rhombus([
+    (215, HEIGHT/2 - 100 - 25 - 100 + 200 + 100),
+    (245, HEIGHT/2 - 100 - 100 + 200 + 100),
+    (215, HEIGHT/2 - 100 + 25 - 100 + 200 + 100),
+    (185, HEIGHT/2 - 100 - 100 + 200 + 100)
+], "n!=0", rhombus_ids1[1])
+
+parallelogram4 = Parallelogram([
+    (50 + BOX_WIDTH_SIZE + 20, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200),
+    (50 + BOX_WIDTH_SIZE*2 + 20, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200),
+    (50 + BOX_WIDTH_SIZE*2 - (BOX_HEIGHT_SIZE / 2) + 30, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200 + BOX_HEIGHT_SIZE),
+    (50 + BOX_WIDTH_SIZE - (BOX_HEIGHT_SIZE / 2) + 30, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200 + BOX_HEIGHT_SIZE)
+], "Въведи n", parallelogram_ids1[0])
+
+parallelogram5 = Parallelogram([
+    (50 + BOX_WIDTH_SIZE + 20, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200 + 100),
+    (50 + BOX_WIDTH_SIZE*2 + 20, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200 + 100),
+    (50 + BOX_WIDTH_SIZE*2 - (BOX_HEIGHT_SIZE / 2) + 30, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200 + 100 + BOX_HEIGHT_SIZE),
+    (50 + BOX_WIDTH_SIZE - (BOX_HEIGHT_SIZE / 2) + 30, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200 + 100 + BOX_HEIGHT_SIZE)
+], "Изведи n", parallelogram_ids1[1])
+
+parallelogram6 = Parallelogram([
+    (50 + BOX_WIDTH_SIZE + 20, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200 + 200),
+    (50 + BOX_WIDTH_SIZE*2 + 20, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200 + 200),
+    (50 + BOX_WIDTH_SIZE*2 - (BOX_HEIGHT_SIZE / 2) + 30, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200 + 200 + BOX_HEIGHT_SIZE),
+    (50 + BOX_WIDTH_SIZE - (BOX_HEIGHT_SIZE / 2) + 30, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200 + 200 + BOX_HEIGHT_SIZE)
+], "Изведи sum", parallelogram_ids1[2])
+
+parallelogram_square6 = Parallelogram([
+    (50, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200),
+    (50 + BOX_WIDTH_SIZE, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 200 ),
+    (50 + BOX_WIDTH_SIZE, HEIGHT/2 + BOX_HEIGHT_SIZE/2 - 200),
+    (50, HEIGHT/2 + BOX_HEIGHT_SIZE/2 - 200)
+], "i++", parallelogram_ids1[3])
+
+parallelogram_square7 = Parallelogram([
+    (50, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 100),
+    (50 + BOX_WIDTH_SIZE, HEIGHT/2 - BOX_HEIGHT_SIZE/2 - 100 ),
+    (50 + BOX_WIDTH_SIZE, HEIGHT/2 + BOX_HEIGHT_SIZE/2 - 100),
+    (50, HEIGHT/2 + BOX_HEIGHT_SIZE/2 - 100)
+], "sum+=n", parallelogram_ids1[4])
+
+parallelogram_square8 = Parallelogram([
+    (50, HEIGHT/2 - BOX_HEIGHT_SIZE/2),
+    (50 + BOX_WIDTH_SIZE, HEIGHT/2 - BOX_HEIGHT_SIZE/2),
+    (50 + BOX_WIDTH_SIZE, HEIGHT/2 + BOX_HEIGHT_SIZE/2),
+    (50, HEIGHT/2 + BOX_HEIGHT_SIZE/2)
+], "i = 1", parallelogram_ids1[5])
+
+parallelogram_square9 = Parallelogram([
+    (50, HEIGHT/2 - BOX_HEIGHT_SIZE/2 + 100),
+    (50 + BOX_WIDTH_SIZE, HEIGHT/2 - BOX_HEIGHT_SIZE/2 + 100),
+    (50 + BOX_WIDTH_SIZE, HEIGHT/2 + BOX_HEIGHT_SIZE/2 + 100),
+    (50, HEIGHT/2 + BOX_HEIGHT_SIZE/2 + 100)
+], "n+=i", parallelogram_ids1[6])
+
+parallelogram_square10 = Parallelogram([
+    (50, HEIGHT/2 - BOX_HEIGHT_SIZE/2 + 200),
+    (50 + BOX_WIDTH_SIZE, HEIGHT/2 - BOX_HEIGHT_SIZE/2 + 200),
+    (50 + BOX_WIDTH_SIZE, HEIGHT/2 + BOX_HEIGHT_SIZE/2 + 200),
+    (50, HEIGHT/2 + BOX_HEIGHT_SIZE/2 + 200)
+], "sum+=i", parallelogram_ids1[7])
+
+shapes1 = [rhombus3, rhombus4, parallelogram4, parallelogram5, parallelogram6, parallelogram_square6, parallelogram_square7, parallelogram_square8, parallelogram_square9, parallelogram_square10]
+correct_ids1 = [3, 8, 9, 1, 10, 6, 5]
+
 BUTTON_WIDTH = 120
 BUTTON_HEIGHT = 50
 BUTTON_COLOR = (0, 255, 0)
@@ -281,11 +314,6 @@ def draw_button():
     text_surface = BUTTON_FONT.render(BUTTON_TEXT, True, BUTTON_TEXT_COLOR)
     text_rect = text_surface.get_rect(center=(BUTTON_POSITION[0] + BUTTON_WIDTH/2, BUTTON_POSITION[1] + BUTTON_HEIGHT/2))
     WIN.blit(text_surface, text_rect)
-
-def restart_game():
-    global placed_ids
-    placed_ids = []
-    main()
 
 def create_window(message, restart = True):
     window = tk.Tk()
@@ -305,27 +333,37 @@ def create_window(message, restart = True):
     label = tk.Label(window, text=message, font=("Arial", 24))
     label.pack()
     
-    if restart:
-        print("Restarting game")
-        restart_button = tk.Button(window, text="Restart", command=restart_game)
-        restart_button.pack()
-    
     window.mainloop()
+
+def randomize():
+    random_number = random.randint(1, 2)
+    return random_number
+
+global random_num
+random_num = randomize()
 
 def check_button_click(pos): 
     global run 
+    END_GAME_IMAGE = pygame.image.load(os.path.join('level4_png', 'endscreen_bg.png'))
+    END_GAME = pygame.transform.scale(END_GAME_IMAGE, (WIDTH, HEIGHT))
+    start_time = pygame.time.get_ticks()
     if BUTTON_POSITION[0] <= pos[0] <= BUTTON_POSITION[0] + BUTTON_WIDTH and \
        BUTTON_POSITION[1] <= pos[1] <= BUTTON_POSITION[1] + BUTTON_HEIGHT:
           for i in range(0, len(correct_ids)):
-              if placed_ids[i] != correct_ids[i]:
-                  create_window("You lost!")
-                  run = False 
-                  return False
+              if random_num == 1:
+                  if placed_ids[i] != correct_ids[i]:
+                      create_window("You lost!")
+                      run = False                      
+                      return False
+              elif random_num == 2:
+                  if placed_ids[i] != correct_ids1[i]:
+                      create_window("You lost!")
+                      run = False 
+                      return False
           create_window("First level passed!")
-    elif BUTTON_POSITION[0] - BUTTON_WIDTH - 10 <= pos[0] <= BUTTON_POSITION[0] - 10 and \
-         BUTTON_POSITION[1] <= pos[1] <= BUTTON_POSITION[1] + BUTTON_HEIGHT:
-            restart_game()
-            
+          while pygame.time.get_ticks() < start_time+5000:
+              screen.blit(END_GAME, (0,0))
+              pygame.display.update() 
 
 def draw():
     WIN.blit(BG, (0, 0))
@@ -342,46 +380,33 @@ def draw():
     text_rect_1 = text_surface_1.get_rect(center=(WIDTH/2 - BOX_WIDTH_SIZE/2 + 360, HEIGHT/2 - BOX_HEIGHT_SIZE/2 + 55 + OVAL_HEIGHT//2 + 10))
     WIN.blit(text_surface_1, text_rect_1)
     
-    rhombus1.draw()
-    rhombus2.draw()
-    parallelogram1.draw()
-    parallelogram2.draw()
-    parallelogram3.draw()
-    parallelogram_square2.draw()
-    parallelogram_square1.draw()
-    parallelogram_square3.draw()
-    parallelogram_square4.draw()
-    parallelogram_square5.draw()
+    if random_num == 1:
+        for shape in shapes:
+            shape.draw()
+    elif random_num == 2:
+        for shape in shapes1:
+            shape.draw()
     
     draw_button()
-
     pygame.display.update()
 
 def main():
     run = True
     clock = pygame.time.Clock()
-
     active_item = None 
     
-    mouse_click_pos = None
-
     while run:
         clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False 
-
-            rhombus1.handle_event(event)
-            rhombus2.handle_event(event)
-            parallelogram1.handle_event(event)
-            parallelogram2.handle_event(event)
-            parallelogram3.handle_event(event)
-            parallelogram_square1.handle_event(event)
-            parallelogram_square2.handle_event(event)
-            parallelogram_square3.handle_event(event)
-            parallelogram_square4.handle_event(event)
-            parallelogram_square5.handle_event(event)
             
+            if random_num == 1:
+                for shape in shapes:
+                    shape.handle_event(event)
+            elif random_num == 2:
+                for shape in shapes1:
+                    shape.handle_event(event)
 
             if event.type == pygame.MOUSEBUTTONUP:
                 if event.button == 1 and active_item:
@@ -396,11 +421,16 @@ def main():
                 if event.button == 1:
                     mouse_click_pos = event.pos
                     check_button_click(mouse_click_pos)
-                    for box in shapes:
-                        if box.collidepoint(event.pos):
-                            active_item = box
-                            break
- 
+                    if random_num == 1:
+                        for shape in shapes:
+                            if shape.collidepoint(event.pos):
+                                active_item = shape
+                                break
+                    elif random_num == 2:
+                        for shape in shapes1:
+                            if shape.collidepoint(event.pos):
+                                active_item = shape
+                                break
 
         draw()
 
